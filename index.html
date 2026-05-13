@@ -1,80 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Beginner Profile Card</title>
-    <style>
-        /* CSS stays here */
-        body {
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            padding-top: 100px;
-            font-family: sans-serif;
-        }
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            width: 300px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-        input {
-            width: 90%;
-            padding: 10px;
-            margin-top: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        #enter-btn {
-            margin-top: 15px;
-            background-color: #28a745;
-            color: white;
-            padding: 10px;
-            width: 100%;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            display: none; /* Hidden by default */
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyCast - Simple Weather</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="card">
-        <h2 id="name-display">Type your name...</h2>
-        <p>Beginner Coder</p>
-        
-        <input type="text" id="name-input" placeholder="Start typing...">
-        <button id="enter-btn">Enter</button>
+    <div class="container">
+        <header>
+            <h1>SkyCast</h1>
+            <p>Check the weather anywhere</p>
+        </header>
+
+        <div class="search-box">
+            <input type="text" id="city-input" placeholder="Enter city name (e.g. London)...">
+            <button id="search-btn">Search</button>
+        </div>
+
+        <div id="weather-card" class="weather-card hidden">
+            <div class="city-name" id="display-city">City Name</div>
+            <div class="temp" id="display-temp">--°C</div>
+            <div class="description" id="display-desc">Weather Description</div>
+            
+            <div class="weather-details">
+                <div class="detail">
+                    <span class="label">Wind</span>
+                    <span id="display-wind">-- km/h</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Humidity</span>
+                    <span id="display-humidity">--%</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="error-message" class="error hidden">
+            Oops! We couldn't find that city. Please try again.
+        </div>
     </div>
 
-    <script>
-        // JAVASCRIPT Logic
-        const nameInput = document.getElementById('name-input');
-        const nameDisplay = document.getElementById('name-display');
-        const enterBtn = document.getElementById('enter-btn');
-
-        // This function runs every time you type
-        nameInput.addEventListener('input', function() {
-            const val = nameInput.value;
-            
-            // 1. Update the name on the card
-            if (val.length > 0) {
-                nameDisplay.innerText = val;
-                enterBtn.style.display = "block"; // 2. Show button
-            } else {
-                nameDisplay.innerText = "Type your name...";
-                enterBtn.style.display = "none";  // 3. Hide button
-            }
-        });
-
-        // When you click Enter
-        enterBtn.addEventListener('click', function() {
-            alert("Hello " + nameInput.value + "!");
-        });
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
